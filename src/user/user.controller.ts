@@ -8,27 +8,27 @@ import { PassportModule } from '@nestjs/passport';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // @Post('register')
-  // async Register ( @Body() body: any, @Res() response) {
-  //   try {
-  //     const res = await this.userService.registerProcess(body)
+  @Post('register')
+  async Register ( @Body() body: any, @Res() response) {
+    try {
+      const res = await this.userService.registerProcess(body)
       
-  //     return response.status(HttpStatus.OK).json(res)
-  //   } catch (error) {
-  //     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error)
-  //   }
-  // }
+      return response.status(HttpStatus.OK).json(res)
+    } catch (error) {
+      return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error)
+    }
+  }
 
-  // @UseGuards(LocalAuthGuard)
-  // @Get('login')
-  // async create(@Request() req, @Res() response) {
-  //   try {
-  //     const user_id = req.id
-  //     const res = await this.userService.loginProcess(user_id)
+  @UseGuards(LocalAuthGuard)
+  @Get('login')
+  async create(@Request() req, @Res() response) {
+    try {
+      const user_id = req.id
+      const res = await this.userService.loginProcess(user_id)
       
-  //     return response.status(HttpStatus.OK).json(res)
-  //   } catch (error) {
-  //     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error)
-  //   }
-  // }
+      return response.status(HttpStatus.OK).json(res)
+    } catch (error) {
+      return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json(error)
+    }
+  }
 }
