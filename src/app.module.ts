@@ -4,13 +4,15 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
+import { Product } from './entities/product.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       ...require('../typeorm.config'),
       entities: [
-        User
+        User,
+        Product,
       ],
     }),
     UserModule],
