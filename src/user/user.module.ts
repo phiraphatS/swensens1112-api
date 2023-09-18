@@ -3,9 +3,9 @@ import { UserService } from './user.service';
 import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/entities/user.entity';
-import { LocalStrategy } from 'src/_helper/local/local.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { LogUser } from 'src/entities/log_user.entity';
 
 @Module({
   imports: [
@@ -21,6 +21,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     TypeOrmModule.forFeature([
       User,
+      LogUser,
     ]),
   ],
   controllers: [
@@ -28,7 +29,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   ],
   providers: [
     UserService,
-    LocalStrategy
   ],
 })
 export class UserModule {}

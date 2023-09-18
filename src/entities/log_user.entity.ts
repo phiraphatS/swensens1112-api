@@ -2,9 +2,12 @@
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
 @Entity()
-export class Product {
+export class LogUser {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column("integer", { name: "user_id" })
+  user_id: number;
 
   @Column("varchar", {
     name: "name",
@@ -12,18 +15,6 @@ export class Product {
     length: 255,
   })
   name: string | null;
-
-  @Column("varchar", {
-    name: "detail",
-    nullable: true,
-  })
-  detail: string | null;
-
-  @Column("integer", { name: "file_id" })
-  file_id: number;
-
-  @Column("integer", { name: "price" })
-  price: number;
 
   @Column("integer", { name: "is_active", default: () => "1" })
   is_active: number;

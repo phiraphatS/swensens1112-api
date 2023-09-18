@@ -47,10 +47,10 @@ export class User {
   @Column("datetime", { name: "birth_date" })
   birth_date: Date;
 
-  @Column("boolean", { name: "is_active", default: () => true })
+  @Column("integer", { name: "is_active", default: () => "1" })
   is_active: number | null;
 
-  @Column("boolean", { name: "is_delete", default: () => false })
+  @Column("integer", { name: "is_delete", default: () => "0" })
   is_delete: number | null;
 
   @Column({ type: 'datetime', name: 'created_at' })
@@ -65,10 +65,10 @@ export class User {
   @Column("integer", { name: "updated_by" })
   updated_by: number;
 
-  @Column("boolean", { name: "is_admin", default: () => false })
+  @Column("integer", { name: "is_admin", default: () => "1" })
   is_admin: number | null;
 
-  @Column("boolean", { name: "agree_news", default: () => false })
+  @Column("integer", { name: "agree_news", default: () => "1" })
   agree_news: number | null;
 
 }

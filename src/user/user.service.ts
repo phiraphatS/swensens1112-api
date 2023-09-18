@@ -95,19 +95,15 @@ export class UserService {
     }
   }
 
-  async loginProcess(user: any,) {
-    if (user.results === null) {
-      return null;
-    }
-
+  async loginProcess(id: any,) {
     try {
-      const resUser = await this.UserRepository.findOneBy({ id : user.id })
+      const resUser = await this.UserRepository.findOneBy({ id : id })
 
       const payload = {
-        email: user.email,
-        is_admin: user.is_admin,
-        first_name: user.first_name,
-        last_name: user.last_name,
+        email: resUser.email,
+        is_admin: resUser.is_admin,
+        first_name: resUser.first_name,
+        last_name: resUser.last_name,
       }
 
       const results = {
@@ -115,7 +111,11 @@ export class UserService {
         access_token: this.jwtService.sign(payload)
       }
 
-
+      return {
+        message: 'success',
+        status: true,
+        results: results
+      }
     } catch (error) {
       throw new HttpException({
         status: false,
